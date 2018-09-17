@@ -20,7 +20,7 @@ endfunction
 
 function! db#adapter#postgresql#filter(url) abort
   return db#adapter#postgresql#interactive(a:url,
-        \ '-P columns=' . &columns . ' -v ON_ERROR_STOP=1 -f -')
+        \ '-P columns=' . &columns . ' -v ON_ERROR_STOP=1 -c "\\set QUIET true" -c "\\timing on" -c "\\set QUIET false" -f -')
 endfunction
 
 function! s:parse_columns(output, ...) abort
